@@ -2,7 +2,9 @@ mod error;
 
 use crate::error::{HitError, HitResult};
 use actix_web::{middleware, web, App, HttpResponse, HttpServer};
+use dotenv::dotenv;
 use rusqlite::{params, Connection, NO_PARAMS};
+use std::env;
 
 const BADGE: &str = include_str!("./badge.svg");
 
@@ -13,14 +15,18 @@ struct Hit {
 
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
+    dotenv().ok();
+
     init_db().expect("Failed to init the database");
+
+    let host = env::var("HITS_HOST").expect("HITS_HOST env variable must be set");
 
     HttpServer::new(|| {
         App::new()
             .wrap(middleware::Compress::default())
             .route("/hits.svg", web::get().to(handler))
     })
-    .bind("127.0.0.1:8088")?
+    .bind(host)?
     .run()
     .await
 }

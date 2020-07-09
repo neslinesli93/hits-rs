@@ -5,7 +5,8 @@ authors = ["Tommaso <p.tommy93@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-actix-web = "2.0"
 actix-rt = "1.0"
+actix-web = "2.0"
+dotenv = "0.15.0"
 lazy_static = "^1.4"
 rusqlite = "0.23.1"

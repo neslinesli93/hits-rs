@@ -16,6 +16,8 @@ Build the binary:
 $ cargo build --release
 ```
 
+Copy the `.env.example` file to `.env` and edit the environment variables if needed
+
 Run the server:
 
 ```bash
