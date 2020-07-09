@@ -2,7 +2,17 @@
 
 A simple http server written in Rust, backed by SQLite, that serves a dynamic hits badge.
 
-## Install
+## Run using docker
+
+Run:
+
+```bash
+docker run --rm -v hits_data:/app --env HITS_HOST=0.0.0.0:8088 -p 8088:8088 -it neslinesli93/hits-rs
+```
+
+You can replace the default port `8088` with whatever you like
+
+## Run from source
 
 Clone the repo:
 
