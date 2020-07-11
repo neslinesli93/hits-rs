@@ -1,7 +1,7 @@
 # Hits-rs
 
 ![Build status (master)](https://img.shields.io/github/workflow/status/neslinesli93/hits-rs/CI/master)
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/neslinesli93/hits-rs?include_prereleases)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/neslinesli93/hits-rs)
 
 A simple http server written in Rust, backed by SQLite, that serves a dynamic hits badge.
 
