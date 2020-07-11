@@ -1,10 +1,10 @@
 # Hits-rs
 
-![Build status (master)](https://img.shields.io/github/workflow/status/neslinesli93/hits-rs/CI/master)
-![Docker Image Version (latest by date)](https://img.shields.io/docker/v/neslinesli93/hits-rs)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/neslinesli93/hits-rs)
+<a href="https://github.com/neslinesli93/hits-rs/actions"><img src="https://img.shields.io/github/workflow/status/neslinesli93/hits-rs/CI/master" alt="Build status (master)" /></a></div>
+<a href="https://hub.docker.com/r/neslinesli93/hits-rs/tags"><img src="https://img.shields.io/docker/v/neslinesli93/hits-rs" alt="Docker Image Version (latest by date)" /></a></div>
+<a href="https://github.com/neslinesli93/hits-rs/releases"><img src="https://img.shields.io/github/v/release/neslinesli93/hits-rs" alt="GitHub release (latest by date)" /></a></div>
 
-A simple http server written in Rust, backed by SQLite, that serves a dynamic hits badge.
+A simple http server written in Rust, backed by SQLite, that renders an SVG image with a dynamic hits counter.
 
 ## Run using docker
 
