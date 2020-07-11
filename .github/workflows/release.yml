@@ -1,7 +1,7 @@
 on:
   push:
-    tags:        
-      - *
+    tags:
+      - v*
 
 name: Create Release
 
@@ -18,10 +18,14 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
       - name: Build and upload image
         uses: docker/build-push-action@v1
         with:
           username: neslinesli93
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
           repository: neslinesli93/hits-rs
-          tags: latest,${{ github.ref }}
+          tags: latest,${{ steps.get_version.outputs.VERSION }}
