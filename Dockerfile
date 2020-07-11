@@ -12,7 +12,6 @@ RUN cargo build --release
 COPY src ./src
 RUN cargo install --force --target x86_64-unknown-linux-musl --path . --root /usr/local
 
-
 # Copy the binary to an empty Docker image
 FROM alpine:3.12
 WORKDIR /app
