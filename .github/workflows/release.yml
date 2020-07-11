@@ -1,0 +1,27 @@
+on:
+  push:
+    tags:        
+      - *
+
+name: Create Release
+
+jobs:
+  build:
+    name: Release new version on github and docker hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create github release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Build and upload image
+        uses: docker/build-push-action@v1
+        with:
+          username: neslinesli93
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          repository: neslinesli93/hits-rs
+          tags: latest,${{ github.ref }}
