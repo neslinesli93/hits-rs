@@ -19,20 +19,27 @@ async fn main() -> std::io::Result<()> {
 
     init_db().expect("Failed to init the database");
 
-    let host = env::var("HITS_HOST").expect("HITS_HOST env variable must be set");
+    let host = env::var("HITS_HOST").unwrap_or("0.0.0.0".to_string());
+    let port = env::var("HITS_PORT").unwrap_or("8088".to_string());
+    let endpoint = env::var("HITS_ENDPOINT").unwrap_or("/hits.svg".to_string());
 
-    HttpServer::new(|| {
+    println!(
+        "Server ready, open http://{}:{}{} to see the live counter",
+        host, port, endpoint
+    );
+
+    HttpServer::new(move || {
         App::new()
             .wrap(middleware::Compress::default())
-            .route("/hits.svg", web::get().to(handler))
+            .route(&endpoint, web::get().to(handler))
     })
-    .bind(host)?
+    .bind(format!("{}:{}", host, port))?
     .run()
     .await
 }
 
 fn init_db() -> HitResult<()> {
-    let db = Connection::open("./hits.db")?;
+    let db = Connection::open("./data/hits.db")?;
 
     db.execute("CREATE TABLE IF NOT EXISTS hits (count INTEGER)", NO_PARAMS)?;
 
@@ -56,7 +63,7 @@ async fn handler() -> HttpResponse {
 }
 
 fn get_count() -> HitResult<Hit> {
-    let conn = Connection::open("./hits.db")?;
+    let conn = Connection::open("./data/hits.db")?;
 
     conn.execute("UPDATE hits SET count = count + 1", NO_PARAMS)?;
 

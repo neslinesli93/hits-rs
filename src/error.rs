@@ -14,7 +14,6 @@ impl From<RusqliteError> for HitError {
     }
 }
 
-
 impl From<String> for HitError {
     fn from(error: String) -> Self {
         HitError::GenericError(error)
