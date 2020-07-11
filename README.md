@@ -42,6 +42,12 @@ After launching the server, it will create a `hits.db` SQLite database inside `d
 
 Open [http://localhost:8088/hits.svg](http://localhost:8088/hits.svg) and check it out!
 
+## Params
+
+- `lower`
+
+Decides whether to show the `hits` in lowercase. Defaults to false.
+
 ## Environment variables
 
 #### HITS_HOST

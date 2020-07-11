@@ -1,8 +1,9 @@
 mod error;
 
 use crate::error::{HitError, HitResult};
-use actix_web::{middleware, web, App, HttpResponse, HttpServer};
+use actix_web::{middleware, web, App, HttpRequest, HttpResponse, HttpServer};
 use dotenv::dotenv;
+use qstring::QString;
 use rusqlite::{params, Connection, NO_PARAMS};
 use std::env;
 
@@ -48,7 +49,15 @@ fn init_db() -> HitResult<()> {
     Ok(())
 }
 
-async fn handler() -> HttpResponse {
+async fn handler(req: HttpRequest) -> HttpResponse {
+    let query_str = req.query_string();
+    let qs = QString::from(query_str);
+
+    let badge_text = match qs.get("lower") {
+        Some("true") => BADGE.clone().replace("HITS", "hits"),
+        _ => BADGE.to_string(),
+    };
+
     match get_count() {
         Ok(Hit { count }) => HttpResponse::Ok()
             .header("Content-Type", "image/svg+xml")
@@ -56,7 +65,7 @@ async fn handler() -> HttpResponse {
                 "Cache-Control",
                 "max-age=0, no-cache, no-store, must-revalidate",
             )
-            .body(BADGE.replace("{count}", &format!("{}", count))),
+            .body(badge_text.replace("{count}", &format!("{}", count))),
 
         _ => HttpResponse::Ok().body(""),
     }
