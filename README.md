@@ -46,7 +46,7 @@ Open [http://localhost:8088/hits.svg](http://localhost:8088/hits.svg) and check 
 
 - `lower`
 
-Decides whether to show the `hits` in lowercase. Defaults to false.
+Decides whether to show the `hits` text in lowercase. Defaults to false.
 
 ## Environment variables
 
