@@ -1,6 +1,6 @@
 # Hits-rs
 
-<a href="https://github.com/neslinesli93/hits-rs"><img src="http://hits.tommasopifferi.com/hits.svg?lower=true" alt="HitCount" /></a></div>
+<a href="https://github.com/neslinesli93/hits-rs"><img src="https://hits.tommasopifferi.com/hits.svg?lower=true" alt="HitCount" /></a></div>
 <a href="https://github.com/neslinesli93/hits-rs/actions"><img src="https://img.shields.io/github/workflow/status/neslinesli93/hits-rs/CI/master" alt="Build status (master)" /></a></div>
 <a href="https://hub.docker.com/r/neslinesli93/hits-rs/tags"><img src="https://img.shields.io/docker/v/neslinesli93/hits-rs" alt="Docker Image Version (latest by date)" /></a></div>
 <a href="https://github.com/neslinesli93/hits-rs/releases"><img src="https://img.shields.io/github/v/release/neslinesli93/hits-rs" alt="GitHub release (latest by date)" /></a></div>
