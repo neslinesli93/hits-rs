@@ -22,10 +22,10 @@
     "bungcip.better-toml",
     "vadimcn.vscode-lldb",
     "mutantdino.resourcemonitor"
-  ]
+  ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
+  "forwardPorts": [8088]
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "rustc --version",
